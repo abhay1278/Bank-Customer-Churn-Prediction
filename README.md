@@ -1,5 +1,11 @@
 # 🏦 Predictive Modeling and Risk Scoring for Bank Customer Churn
 
+## 🌐 Live Demo
+👉 https://bank-customer-churn-prediction-xxxxxxxx.streamlit.app
+
+## 📂 GitHub Repository
+https://github.com/abhay1278/Bank-Customer-Churn-Prediction
+
 ## 📌 Project Overview
 
 This project predicts whether a bank customer is likely to churn using Machine Learning. The application is built with Streamlit and allows users to input customer details, calculate churn probability, generate a customer risk score, and receive business recommendations.
