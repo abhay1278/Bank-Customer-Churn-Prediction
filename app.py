@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import joblib
+from joblib import load
 import plotly.graph_objects as go
 
 # ------------------------------
@@ -17,9 +17,8 @@ st.set_page_config(
 # ------------------------------
 # Load Model & Scaler
 # ------------------------------
-
-model = joblib.load("churn_model.pkl")
-scaler = joblib.load("scaler.pkl")
+model = load("churn_model.pkl")
+scaler = load("scaler.pkl")
 
 importance = pd.DataFrame({
     "Feature": model.feature_names_in_,
@@ -174,8 +173,13 @@ numerical_cols = [
     "Tenure"
 ]
 
-input_data.loc[:, numerical_cols] = scaler.transform(
-    input_data[numerical_cols].values
+# Scale only numerical columns
+scaled_values = scaler.transform(input_data[numerical_cols])
+
+input_data[numerical_cols] = pd.DataFrame(
+    scaled_values,
+    columns=numerical_cols,
+    index=input_data.index
 )
 
 
